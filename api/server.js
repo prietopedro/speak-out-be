@@ -86,7 +86,7 @@ server.post("/parent-register", (req, res) => {
         }).then(student => {
           res.status(200).json({
             student_name: `${student.first_name} ${student.additional_names}`
-          })
+          });
         }).catch(error => {
           res.status(500).json({
             message: `There was an error attempting to register a student: ${error}.`
