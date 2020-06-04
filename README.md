@@ -5,6 +5,7 @@
 # API Documentation
 
 #### Backend delpoyed at [Heroku](https://speakout-lambda.herokuapp.com/) <br>
+
 #### [Postman API Documentation](https://documenter.getpostman.com/view/8230639/SWTD8wyQ?version=latest#ab443920-3ba6-46b2-bff9-0de953af9172)
 
 ## Getting started
@@ -16,13 +17,12 @@ To get the server running locally:
 - **npm run server** to start the local server
 - **npm run test** to start server using testing environment
 
-### Backend framework 
+### Backend framework
 
--    NodeJS
--    ExpressJS
--    PassportJS
--    PostgreSQL
-
+- NodeJS
+- ExpressJS
+- PassportJS
+- PostgreSQL
 
 ## Environment Variables
 
@@ -36,8 +36,8 @@ create a .env file that includes the following:
     * DB_TESTING_NAME - local testing-database name
     * DB_USER - local database role
     * DB_ENV - local database environment
-    * DB_PASSWORD local database role password 
-    
+    * DB_PASSWORD local database role password
+
 ## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
@@ -46,11 +46,12 @@ Please note we have a [code of conduct](./code_of_conduct.md). Please follow it 
 
 ### Issue/Bug Request
 
- **If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
- - Check first to see if your issue has already been reported.
- - Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
- - Create a live example of the problem.
- - Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes,  where you believe the issue is originating from, and any potential solutions you have considered.
+**If you are having an issue with the existing project code, please submit a bug report under the following guidelines:**
+
+- Check first to see if your issue has already been reported.
+- Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
+- Create a live example of the problem.
+- Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes, where you believe the issue is originating from, and any potential solutions you have considered.
 
 ### Feature Requests
 
@@ -77,4 +78,3 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 ## Documentation
 
 See [Frontend Documentation](https://github.com/Lambda-School-Labs/speak-out-fe/blob/master/README.md) for details on the front-end of our project.
-
