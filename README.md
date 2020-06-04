@@ -1,21 +1,14 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/5639a94bef21c852db5f/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/speak-out-be/maintainability)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/5639a94bef21c852db5f/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/speak-out-be/test_coverage)
-
 # API Documentation
 
-#### Backend delpoyed at [Heroku](https://speakout-lambda.herokuapp.com/) <br>
+#### Backend delpoyed at [AWS](https://speakoutbe.pedroprieto.dev) <br>
 
 #### [Postman API Documentation](https://documenter.getpostman.com/view/8230639/SWTD8wyQ?version=latest#ab443920-3ba6-46b2-bff9-0de953af9172)
 
-## Getting started
+## Client Documentation
 
-To get the server running locally:
-
-- Clone this repo
-- **npm install** to install all required dependencies
-- **npm run server** to start the local server
-- **npm run test** to start server using testing environment
+See [Frontend Documentation](https://github.com/prietop97/speak-out-fe) for details on the front-end of our project.
 
 ### Backend framework
 
@@ -23,6 +16,25 @@ To get the server running locally:
 - ExpressJS
 - PassportJS
 - PostgreSQL
+- Knex
+- Postgres
+
+## Getting started
+
+To get the server running locally:
+
+- Clone this repo
+- **npm install** to install all required dependencies
+- **create postgres database** See more below
+- **create .env file** Configure database and environment
+- **npx knex migrate:latest** To create database tables
+- **npx knex seed:run** To seed tables with data
+- **npm run server** to start the local server
+
+## Create postgres database
+
+- Download postgres and pgAdmin https://www.postgresql.org/
+- Create database using pgAdmin or terminal (Only database, tables will be created later)
 
 ## Environment Variables
 
@@ -30,12 +42,11 @@ In order for the app to function correctly, the user must set up their own envir
 
 create a .env file that includes the following:
 
-    * PORT - Port number (4000 by default)
+    * PORT - Port number (5000 by default)
     * NODE_ENV - set to "development" until ready for "production"
-    * DB_NAME - local database name
-    * DB_TESTING_NAME - local testing-database name
-    * DB_USER - local database role
-    * DB_ENV - local database environment
+    * DB_NAME - local database name (Look above for more information)
+    * DB_USER - local database role (Default to postgres but might be different depending on setup)
+    * DB_ENV - local database environment ("development" until ready for "production")
     * DB_PASSWORD local database role password
 
 ## Contributing
@@ -74,7 +85,3 @@ Remember that this project is licensed under the MIT license, and by submitting 
 ### Attribution
 
 These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
-
-## Documentation
-
-See [Frontend Documentation](https://github.com/Lambda-School-Labs/speak-out-fe/blob/master/README.md) for details on the front-end of our project.
