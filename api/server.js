@@ -25,7 +25,7 @@ const server = express();
 // ------- Middleware --------
 server.use(
 	cors({
-		origin: "http://localhost:3000",
+		origin: ["http://localhost:3000", "speakout.pedroprieto.now.sh"],
 		credentials: true,
 	})
 );
