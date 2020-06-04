@@ -23,21 +23,17 @@ const attendanceRoutes = require("./routes/attendance.routes");
 const server = express();
 
 // ------- Middleware --------
-server.use(cors());
+server.use(
+	cors({
+		origin: "http://localhost:3000",
+		credentials: true,
+	})
+);
 server.use(express.json());
 createSession(server);
 initializePassport(passport);
 
-//// NEED TO BE MOVED BENEATH AUTH ROLE MIDDLEWARE -- NOT SECURED --> ANYONE CAN ACCESS THIS ENDPOINT AT THIS MOMENT
-server.use(authRoutes);
-server.use(staffRoutes);
-server.use(studentRoutes);
-server.use(courseRoutes);
-server.use(courseEnrollmentRoutes);
-server.use(attendanceRoutes);
-
-///// NEED TO BE REFACTORED INTO A MODEL ETC FOR PARENTS, STAFF REGISTRATION IS COMPLETE!
-// -------- Endpoints --------
+/// LOGIN / SIGNUP / USER ENDPOINTS NEED TO BE REFACTORED INTO IT'S OWN ROUTE
 server.post("/register", (req, res) => {
 	const hashedPassword = bcrypt.hashSync(req.body.password, 10);
 	model
@@ -60,7 +56,6 @@ server.post("/register", (req, res) => {
 		});
 });
 
-/// LOGIN / LOGOUT NEEDS TO BE REFACTORED TO AUTH ROUTES
 server.post(
 	"/login",
 	passport.authenticate("local", {
@@ -80,12 +75,6 @@ server.post(
 	}
 );
 
-server.get("/logout", (req, res) => {
-	req.logout();
-	req.session.destroy();
-	res.json({ message: "bye" });
-});
-
 server.get("/user", async (req, res) => {
 	console.log("====USER====");
 	let userName = req.body ? req.body.username : undefined;
@@ -100,6 +89,23 @@ server.get("/user", async (req, res) => {
 	});
 });
 
+server.use(checkAuthenticated);
+server.use(authRoutes);
+server.use(staffRoutes);
+server.use(studentRoutes);
+server.use(courseRoutes);
+server.use(courseEnrollmentRoutes);
+server.use(attendanceRoutes);
+
+///// NEED TO BE REFACTORED INTO A MODEL ETC FOR PARENTS, STAFF REGISTRATION IS COMPLETE!
+// -------- Endpoints --------
+
+server.get("/logout", (req, res) => {
+	req.logout();
+	req.session.destroy();
+	res.json({ message: "bye" });
+});
+
 //// END OF AUTH REFACTORING
 
 /// THIS IS FINE
@@ -111,7 +117,7 @@ server.get("/", (req, res) => {
 		);
 });
 
-//// NEED TO CHECK IF THERE ARE ANY OTHER ENDPOINTS ON THE FRONT END USING THIS ENDPOINTS AND REFACTORED INTO THEIR OWN ROUTES
+// STILL USING FEW OF THIS ROUTES IN THE CLIENT ##Old API
 server.get("/api", checkAuthenticated, (req, res) => {
 	const perPage = req.query.perPage;
 	const skip = req.query.skip;
