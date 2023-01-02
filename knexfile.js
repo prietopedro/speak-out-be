@@ -1,20 +1,19 @@
 // Update with your config settings.
 require("dotenv").config();
 
-const database_name = process.env.DB_NAME;
-const database_user = process.env.DB_USER;
-const database_password = process.env.DB_PASSWORD;
-const database_host = process.env.DB_HOST;
+// OLD DATABASE SETUP
+// const database_name = process.env.DB_NAME;
+// const database_user = process.env.DB_USER;
+// const database_password = process.env.DB_PASSWORD;
+// const database_host = process.env.DB_HOST;
+
+// NEW DATABASE SETUP
+const database_url = process.env.DATABASE_URL
 
 module.exports = {
 	production: {
 		client: "postgresql",
-		connection: {
-			port: 5432,
-			database: database_name,
-			user: database_user,
-			password: database_password,
-		},
+		connection: process.env.DATABASE_URL,
 		seeds: {
 			directory: "./database/seeds",
 		},
@@ -24,12 +23,7 @@ module.exports = {
 	},
 	development: {
 		client: "postgresql",
-		connection: {
-			host: database_host,
-			database: database_name,
-			user: database_user,
-			password: database_password,
-		},
+		connection: process.env.DATABASE_URL,
 		seeds: {
 			directory: "./database/seeds",
 		},
@@ -39,12 +33,7 @@ module.exports = {
 	},
 	testing: {
 		client: "postgresql",
-		connection: {
-			host: database_host,
-			database: database_name,
-			user: database_user,
-			password: database_password,
-		},
+		connection: process.env.DATABASE_URL,
 		seeds: {
 			directory: "./database/seeds",
 		},
