@@ -9,6 +9,7 @@ require("dotenv").config();
 
 // NEW DATABASE SETUP
 const database_url = process.env.DATABASE_URL
+console.log(database_url)
 
 module.exports = {
 	production: {
