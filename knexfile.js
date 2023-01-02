@@ -13,7 +13,7 @@ const database_url = process.env.DATABASE_URL
 module.exports = {
 	production: {
 		client: "postgresql",
-		connection: process.env.DATABASE_URL,
+		connection: database_url,
 		seeds: {
 			directory: "./database/seeds",
 		},
@@ -23,7 +23,7 @@ module.exports = {
 	},
 	development: {
 		client: "postgresql",
-		connection: process.env.DATABASE_URL,
+		connection: database_url,
 		seeds: {
 			directory: "./database/seeds",
 		},
@@ -33,7 +33,7 @@ module.exports = {
 	},
 	testing: {
 		client: "postgresql",
-		connection: process.env.DATABASE_URL,
+		connection: database_url,
 		seeds: {
 			directory: "./database/seeds",
 		},
