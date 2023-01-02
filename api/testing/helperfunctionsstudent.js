@@ -3,7 +3,7 @@ const cleaner = require('knex-cleaner');
 const StudentModel = require('../models/student.model');
 const StaffModel = require('../models/staff.model');
 const CourseModel = require('../models/course.model');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const password = bcrypt.hashSync('pass', 8);
 
 class Family {

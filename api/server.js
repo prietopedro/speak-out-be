@@ -3,7 +3,7 @@ require("dotenv").config();
 // ------- Imports --------
 const express = require("express");
 const cors = require("cors");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const model = require("./model.js");
 
