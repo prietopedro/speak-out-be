@@ -1,5 +1,6 @@
 // Update with your config settings.
 require("dotenv").config();
+const parse = require("pg-connection-string").parse
 
 // OLD DATABASE SETUP
 // const database_name = process.env.DB_NAME;
@@ -8,12 +9,12 @@ require("dotenv").config();
 // const database_host = process.env.DB_HOST;
 
 // NEW DATABASE SETUP
-const database_url = process.env.DATABASE_URL
-console.log(database_url)
+const database_url = parse(process.env.DATABASE_URL)
+database_url.ssl = { rejectUnauthorized: false };
 
 module.exports = {
 	production: {
-		client: "postgresql",
+		client: "pg",
 		connection: database_url,
 		seeds: {
 			directory: "./database/seeds",
@@ -23,7 +24,7 @@ module.exports = {
 		},
 	},
 	development: {
-		client: "postgresql",
+		client: "pg",
 		connection: database_url,
 		seeds: {
 			directory: "./database/seeds",
@@ -33,7 +34,7 @@ module.exports = {
 		},
 	},
 	testing: {
-		client: "postgresql",
+		client: "pg",
 		connection: database_url,
 		seeds: {
 			directory: "./database/seeds",
