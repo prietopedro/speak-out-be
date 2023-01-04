@@ -33,12 +33,12 @@ server.use(express.json());
 createSession(server);
 initializePassport(passport);
 
-server.use((req, res, next)=>{
-	console.log(req)
-    req["session"]["cookie"].secure = true;
-    next();
-});
-
+// server.use((req, res, next)=>{
+// 	console.log(req)
+//     req["session"]["cookie"].secure = true;
+//     next();
+// });
+server.set('trust proxy', 1);
 
 /// LOGIN / SIGNUP / USER ENDPOINTS NEED TO BE REFACTORED INTO IT'S OWN ROUTE
 server.post("/register", (req, res) => {
