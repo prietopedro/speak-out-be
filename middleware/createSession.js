@@ -22,7 +22,7 @@ const sessionConfig = {
     maxAge: 1 * 24 * 60 * 60 * 1000,
     secure: true, // true means only send cookie over https
     httpOnly: true,
-    // sameSite: 'none'
+    sameSite: 'none'
   },
   store: store
 };
