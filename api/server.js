@@ -33,6 +33,11 @@ server.use(express.json());
 createSession(server);
 initializePassport(passport);
 
+server.use((req, res, next)=>{
+    req["sessionCookies"].secure = true;
+    next();
+});
+
 
 /// LOGIN / SIGNUP / USER ENDPOINTS NEED TO BE REFACTORED INTO IT'S OWN ROUTE
 server.post("/register", (req, res) => {
