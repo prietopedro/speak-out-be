@@ -35,7 +35,7 @@ initializePassport(passport);
 
 server.use((req, res, next)=>{
 	console.log(req)
-    req["sessionCookies"].secure = true;
+    req["session"]["cookie"].secure = true;
     next();
 });
 
