@@ -21,10 +21,16 @@ const sessionConfig = {
   cookie: {
     maxAge: 1 * 24 * 60 * 60 * 1000,
     secure: false, // true means only send cookie over https
-    // httpOnly: true
+    // httpOnly: true,
+    sameSite: 'strict'
   },
   store: store
 };
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1); // trust first proxy
+  sessionConfig.cookie.secure = true; // serve secure cookies
+}
+
 
 module.exports = server => {
   server.use(session(sessionConfig));
