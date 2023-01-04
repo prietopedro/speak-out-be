@@ -25,7 +25,7 @@ const server = express();
 // ------- Middleware --------
 server.use(
 	cors({
-		origin: ["http://localhost:3000", "speakout.pedroprieto.now.sh"],
+		origin: ["http://localhost:3000", "https://speak-out-fe-krdm.vercel.app"],
 		credentials: true,
 	})
 );
