@@ -34,6 +34,7 @@ createSession(server);
 initializePassport(passport);
 
 server.use((req, res, next)=>{
+	console.log(req)
     req["sessionCookies"].secure = true;
     next();
 });
