@@ -7,7 +7,7 @@ module.exports = passport => {
         const user = await db('user')
             .where({ username })
             .first();
-
+        console.log(user);
         if (user == null) {
             return done(null, false, { message: 'No user with that username' });
         }
